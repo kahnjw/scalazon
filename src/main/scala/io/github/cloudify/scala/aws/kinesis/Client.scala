@@ -211,6 +211,12 @@ object Client {
     fromClient(kinesisClient)
   }
 
+  def fromCredentials(credentialsProvider: AWSCredentialsProvider, endpoint: String) = {
+    val kinesisClient = new AmazonKinesisClient(credentialsProvider)
+    kinesisClient.setEndpoint(endpoint)
+    fromClient(kinesisClient)
+  }
+
   /**
    * Creates a client from an access key and a secret key.
    */
